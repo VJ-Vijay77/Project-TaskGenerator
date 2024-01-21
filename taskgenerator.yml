@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-generator-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: task-generator
+  template:
+    metadata:
+      labels:
+        app: task-generator
+    spec:
+      containers:
+      - name: task-generator
+        image: task:latest  # Specify the local image name
+        ports:
+        - containerPort: 8080
